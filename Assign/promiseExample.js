@@ -1,11 +1,11 @@
-var fs = require('fs');
-var file = 'numbers.txt';
+var fs = require('fs');         //import fs module
+var file = 'numbers.txt';       //grtting a file name
 
 function readFile(){
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {       //promise-->Represents the completion of an asynchronous operation
         try {
-            fs.exists(file, function(exist) {
-                if (exist) {
+            fs.exists(file, function(exist) {   //checking file exist or not as local function
+                if (exist) {                    //if exist then true
                     //console.log("1", exist)
                     resolve(exist);
                 } else {
@@ -13,7 +13,7 @@ function readFile(){
                     reject(exist)
                 }
             });
-        } catch (error) {
+        } catch (error) {                   //if getting any type of exception then print error
             console.log(reject(error));
         }
     })
@@ -21,7 +21,7 @@ function readFile(){
         console.log('exist: '+exist);
         return new Promise((resolve, reject) => {
             if (exist) { 
-                fs.stat(file, function(err, statCheck){
+                fs.stat(file, function(err, statCheck){     //get file status
                     if(statCheck){
                         console.log('inside exist: '+ statCheck.isFile());  
                         resolve(statCheck);
@@ -47,21 +47,21 @@ function readFile(){
             }
         })
     })
-    .then((dataFromPreviousFunction) => {
-        var array = dataFromPreviousFunction.toString().split('');
-        var newArray = array.map(Number);
-        return bubbleSort(newArray);
+    .then((dataFromPreviousFunction) => {                                //passing file data in buffer format
+        var array = dataFromPreviousFunction.toString().split(',');      //convert file data into String format
+        var newArray = array.map(Number);                               //convert file data into number format
+        return bubbleSort(newArray);                                    // return bubbleSort function with array
     })
     .then((sortedArray) => {
         console.log(sortedArray);    
     })
 }
 
-function bubbleSort(arr){
+function bubbleSort(arr){               //function for sorting Array
     return new Promise(function(resolve, reject){
         try {
             //var arr = [36, 5, 12, 67, 28];
-            //console.log("Given Array is:["+arr+"]");
+            //console.log("Given Array is:"+arr);
             var temp;
             var count = arr.length;
             for (let i = 0; i < count; i++){
@@ -89,4 +89,4 @@ readFile();
 }
 
 tesat = () =>  "hi";  //6a standard
- */
+*/
