@@ -1,27 +1,30 @@
-const readLie = require('prompt-sync')();
-var stake = readLie("Enter stake:");    //gambler's stating bankroll
-var goal = readLie("Enter goal:");     //gambler's desired bankroll
-var trials = readLie("Enter trials:");  //number of trials to perform 
-
-var bets = 0;       //total number of bets made
-var wins = 0;       //total number of games won
+const readline = require('prompt-sync')();
+var stake = readline("Enter stake:");    //gambler's stating bankroll
+var goal = readline("Enter goal:");     //gambler's desired bankroll
+var trials = readline("Enter trials:");  //number of trials to perform 
+//var stake = 20;
+//var goal = 50;
+//var trials = 1000;
+var bets = 0;       
+var wins = 0;    
 
 //repeat trials times
-for (let i = 0; i< trials; i++){
-    //do one gambler's ruin simulation
+for (var t = 0; t < trials; t++) {
+    // do one gambler's ruin simulation
     var cash = stake;
-    while (cash > 0 && cash < goal){
+    while (cash > 0 && cash < goal) {
         bets++;
         if (Math.random() < 0.5){
-            cash++;  // win $1
+            cash++;     // win
         } else {
-            cash--; //lose $1
-        } 
-        if ( cash == goal){
-            wins++;     //did gambler go achieve desired goal?
-        }
+            cash--;     // lose
+        }                     
     }
+    if (cash == goal){
+        wins++;        // did gambler go achieve desired goal?
+    } 
 }
+
 //print results
 console.log(wins+" wins of "+trials);
 console.log("Percentage of games won = "+100*wins/trials);

@@ -3,7 +3,7 @@ const name = readLie('what is your name? ');
 //const name = 'Kishor';
 if(name.length > 3)
 {
-    console.log('Hello '+name,", How are You?");   
+    console.log('Hello '+name,", How are You?");
 }
 else
 {
