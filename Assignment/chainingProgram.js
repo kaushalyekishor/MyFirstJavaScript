@@ -1,5 +1,7 @@
+//chaining Program
+
 var myFunc = function outerfunction(){
-    var val = 15
+    var val = 10
     function inner(){
     }
     function innerTwo(){
@@ -7,7 +9,7 @@ var myFunc = function outerfunction(){
         var newVal = val + sampleValue       
             function foo(){
                 test = 5;
-                var fooValue = 58;
+                var fooValue = 50;
                 return fooValue + newVal;
         }
         return foo();
