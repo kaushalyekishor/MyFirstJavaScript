@@ -16,10 +16,10 @@ function readForSort(){         //function calling
                             const numberArray = arrayData.map(Number);
                             bubble(numberArray, function(sortedData){ // passing callback function to bubble sort with data
                                 if(err){
-                                    throw err;
+                                    throw err;                      //if err then throw
                                 }
                                 else {
-                                    console.log(sortedData);
+                                    console.log(sortedData);        //print sorted Data
                                 }
                             })
                         }

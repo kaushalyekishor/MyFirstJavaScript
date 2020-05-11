@@ -12,10 +12,9 @@ var myFunc = function outerfunction(){
         }
         return foo();
     }
-
     return innerTwo();
 }
 
 var result = myFunc();
 console.log(result);
-console.log(test);
+console.log(test); 

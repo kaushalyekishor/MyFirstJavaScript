@@ -2,7 +2,7 @@ var fs = require('fs');         //import fs module
 var file = 'numbers.txt';       //grtting a file name
 
 function readFile(){
-    return new Promise((resolve, reject) => {       //promise-->Represents the completion of an asynchronous operation
+    return new Promise((resolve, reject) => {    //promise-->Represents the completion of an asynchronous operation
         try {
             fs.exists(file, function(exist) {   //checking file exist or not as local function
                 if (exist) {                    //if exist then true
@@ -47,8 +47,8 @@ function readFile(){
             }
         })
     })
-    .then((dataFromPreviousFunction) => {                                //passing file data in buffer format
-        var array = dataFromPreviousFunction.toString().split(',');      //convert file data into String format
+    .then((PreviousFunctionData) => {                                //passing file data in buffer format
+        var array = PreviousFunctionData.toString().split(',');      //convert file data into String format
         var newArray = array.map(Number);                               //convert file data into number format
         return bubbleSort(newArray);                                    // return bubbleSort function with array
     })
@@ -74,7 +74,7 @@ function bubbleSort(arr){               //function for sorting Array
                     }
                 }
             }
-            console.log("Sorted Array is:", arr);
+            console.log("Sorted Array is:");
             resolve(arr);            
         } catch (error) {
             reject(error)
